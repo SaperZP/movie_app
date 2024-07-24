@@ -5,3 +5,38 @@
 body {
     background-color: #849bac;
 }
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* src/index.css or appropriate CSS file */
+
+@keyframes zoomIn {
+    0% {
+        transform: translateZ(-200px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
+
+.wrap-original-transform {
+    perspective: 8px;
+    transform-style: preserve-3d;
+}
+
+.original-transform {
+    animation: zoomIn 500ms ease-out forwards;
+}
+
+
+@layer components {
+    .formik_custom-field {
+        @apply mt-1 w-full rounded bg-gray-200 px-3 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-blue-600;
+    }
+}

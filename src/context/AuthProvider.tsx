@@ -1,21 +1,18 @@
-import {FC, ReactNode, useState} from "react";
-import {AuthContext} from ".";
-import {onAuthStateChanged} from 'firebase/auth'
-import {auth} from "../auth/fierbase.ts";
+import { FC, ReactNode, useState } from "react";
+import { AuthContext } from ".";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { auth } from "../auth/fierbase.ts";
 
-
-const AuthProvider: FC<{ children: ReactNode }> = ({children}) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const [authUser, setAuthUser] = useState<User | null>(null);
 
   onAuthStateChanged(auth, (user) => {
-    setIsAuthenticated(!!user)
+    setAuthUser(user);
   });
 
   return (
-      <AuthContext.Provider value={{isAuthenticated}}>
-        {children}
-      </AuthContext.Provider>
-  )
-}
+    <AuthContext.Provider value={authUser}>{children}</AuthContext.Provider>
+  );
+};
 
 export default AuthProvider;
