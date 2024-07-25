@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/movie-details/:movieId",
         element: <PrivateRoute />,
-        children: [{ element: <DetailsPage /> }],
+        children: [{ element: <DetailsPage />, index: true }],
       },
     ],
   },
