@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import { IMovie } from "../types.ts";
-import { fetchDiscoverMovies } from "../api/api.ts";
 import Card from "../components/Card.tsx";
+import useMovies from "../hooks/useMovies.ts";
 
 const MainPage = () => {
-  const [movies, setMovies] = useState<IMovie[]>([]);
+  // const [movies, setMovies] = useState<IMovie[]>([]);
+  //
+  // useEffect(() => {
+  //   const getMovies = async () => {
+  //     try {
+  //       const response = await fetchDiscoverMovies();
+  //       setMovies(response.results);
+  //     } catch {
+  //       setMovies([]);
+  //     }
+  //   };
+  //
+  //   getMovies();
+  // }, []);
 
-  useEffect(() => {
-    const getMovies = async () => {
-      try {
-        const response = await fetchDiscoverMovies();
-        setMovies(response.results);
-      } catch {
-        setMovies([]);
-      }
-    };
-
-    getMovies();
-  }, []);
+  const { movies } = useMovies();
 
   return (
     <div className={"mt-4 flex flex-wrap justify-center gap-4"}>

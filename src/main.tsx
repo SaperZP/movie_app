@@ -1,13 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
 import AuthProvider from "./context/AuthProvider.tsx";
+import MoviesProvider from "./context/MoviesProvider.tsx";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      <AuthProvider>
-        <App/>
-      </AuthProvider>
-    </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <AuthProvider>
+      <MoviesProvider>
+        <App />
+      </MoviesProvider>
+    </AuthProvider>
+  </React.StrictMode>,
+);
